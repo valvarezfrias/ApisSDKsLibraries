@@ -1,16 +1,13 @@
 import requests
 
-url = 'https://accounts.spotify.com/api/token' #url for authorization
-data = {'title': 'Special Agent', 'body': 'Leroy Jethro Gibbs', 'userId': 1}
-
-id = '97f80bee2862417da0a81014d26407bd'
-secret = '36fb2f9eb3c344848df4b4dac98e89a7'
-
-response = requests.post(url,{'grant_type':'client_credentials', 
-                              #^^must be set this way according to spotify api
-                              'client_id':id, #request login id
-                              'client_secret':secret,}) #request login pass
-
-print(response.status_code)
-print(response.json()) #the user grants access so it prints access_token,token_type,
-                       #expires_in (AS A DICT)
+url = 'http://api.openweathermap.org/data/2.5/weather?q=Portland,%20us&appid=382a88e893bb013cca439718beab4f51'
+r = requests.get(url)
+#print(r.status_code)
+weather = r.json()
+#print(weather)
+print("Weather in Portland")
+print(weather['weather'][0]['description'].upper())
+print("Current Temperature: ", weather['main']['temp']//10)
+print("Feels like: ", weather['main']['feels_like']//10)
+print("Max Temperature: ", weather['main']['temp_max']//10)
+print("Humidity: ", weather['main']['humidity'])
