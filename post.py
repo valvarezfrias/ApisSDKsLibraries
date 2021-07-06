@@ -47,7 +47,7 @@ pprint.pprint(dictarr1)
 with open("weatherPortland.json", "w") as outfile:
     json.dump(weather, outfile)
 # turn dictionary of Corvallis into JSON
-with open("weatherMiami.json", "w") as outfile: 
+with open("weatherMiami.json", "w") as outfile:
     json.dump(weather1, outfile)
 # open JSON file and make it a dataframe PORTLAND
 data = json.load(open('weatherPortland.json'))
