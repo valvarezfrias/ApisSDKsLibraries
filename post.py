@@ -72,4 +72,5 @@ def miamiPrint(url1):
     print("Humidity: ", weather1['main']['humidity'], "\n")
     return weather1
 
-main()
+if __name__ == '__main__':
+    main()
