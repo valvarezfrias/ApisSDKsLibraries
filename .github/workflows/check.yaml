@@ -28,8 +28,11 @@ jobs:
         run: pip install IPython
         
       - name: Connect to sql
-        run: sudo /usr/local/mysql/support-files/mysql.server start 
-
+        run: mysql.server start
+       
+      - name: Run sql
+        run: mysql -h localhost -u root -p
+        
       - name: Install sql
         run: pip install mysql
         
