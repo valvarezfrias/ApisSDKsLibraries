@@ -27,8 +27,6 @@ jobs:
       - name: Install IPython
         run: pip install IPython
         
-      - name: Install sqldb
-        run: sudo apt install default-libmysqlclient-dev
 
       - name: Test with unittest
         run: |
