@@ -28,7 +28,7 @@ jobs:
         run: pip install IPython
         
       - name: Install sql
-        run: pip install MySQLdb
+        run: pip install mysql
         
       - name: Test with unittest
         run: |
