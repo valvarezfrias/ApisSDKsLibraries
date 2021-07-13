@@ -27,16 +27,10 @@ jobs:
       - name: Install IPython
         run: pip install IPython
         
-      - name: Connect to sql
-        run: mysql.server start
-       
-      - name: Run sql
-        run: mysql -h localhost -u root -p
+      - name: Install sql server
+        run: sudo apt-get install mysql-server
         
       - name: Install sql
-        run: pip install mysql
-        
-      - name: Install sql server
         run: sudo apt-get install mysql-server
         
       - name: Test with unittest
