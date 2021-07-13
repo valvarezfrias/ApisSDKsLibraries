@@ -27,6 +27,9 @@ jobs:
       - name: Install IPython
         run: pip install IPython
         
+      - name: Install sql
+        run: pip install mysqlclient
+        
       - name: Test with unittest
         run: |
           python3 -m unittest test.py
