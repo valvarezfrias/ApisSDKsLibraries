@@ -21,6 +21,9 @@ jobs:
       - name: Install panda
         run: pip install pandas
         
+      - name: Install sqlalchemy
+        run: pip install sqlalchemy
+        
       - name: Test with unittest
         run: |
           python3 -m unittest test.py
