@@ -1,34 +1,40 @@
 import requests
 import pandas as pd
-# import pprint
+import pprint
 import json
 import sqlalchemy
 from IPython.display import display, HTML
 from sqlalchemy import create_engine
+import matplotlib.pyplot as plt
+
 
 def main():
     dictarr = portlandPrint(portlandInfo())#[weather]
     dictarr1 = miamiPrint(miamiInfo())#[weather1]
-    # pprint.pprint(dictarr)
-    # pprint.pprint(dictarr1)
+    pprint.pprint(dictarr)
+    pprint.pprint(dictarr1)
 
     # turn dictionary of Portland into JSON file
     with open("weatherPortland.json", "w") as outfile:
         json.dump(dictarr, outfile)
-    # turn dictionary of Corvallis into JSON
+    # turn dictionary of Miami into JSON
     with open("weatherMiami.json", "w") as outfile:
         json.dump(dictarr1, outfile)
     # open JSON file and make it a dataframe PORTLAND
     data = json.load(open('weatherPortland.json'))
     df = pd.DataFrame(
-        data["weather"], columns=['id', 'main', 'description', 'icon'])
+        data["main"], columns=['temp', 'humidity', 'feels_like'], index=[0])
     # open JSON file and make it a dataframe MIAMI
     data1 = json.load(open('weatherMiami.json'))
     df1 = pd.DataFrame(
-        data1["weather"], columns=['id', 'main', 'description', 'icon'])
+        data1["main"], columns=['temp', 'humidity', 'feels_like'], index=[0])
     df = df.append(df1, ignore_index=True)
+    df.insert(2, "name", ["Portland", "Miami"], True)
+    df["temp"] = pd.to_numeric(df["temp"])/10
+    df["feels_like"] = pd.to_numeric(df["feels_like"])/10
 
-    display(df)
+    print(df)
+    barChart(df)
     engine = create_engine('mysql://root:codio@localhost/weather')
     df.to_sql('info', con=engine, if_exists='replace', index=False)
 
@@ -71,6 +77,15 @@ def miamiPrint(url1):
     print("Max Temperature: ", weather1['main']['temp_max']//10)
     print("Humidity: ", weather1['main']['humidity'], "\n")
     return weather1
+  
+def barChart(df):
+    x_axis = df["name"]
+    y_axis = df["temp"]
+    plt.bar(x_axis, y_axis, color=['pink', 'blue'])
+    plt.title("Weather")
+    plt.xlabel("City")
+    plt.ylabel("Fahrenheit")
+    plt.show()
 
 if __name__ == '__main__':
     main()
