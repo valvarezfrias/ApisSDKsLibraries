@@ -3,7 +3,6 @@ import pandas as pd
 import pprint
 import json
 import sqlalchemy
-from IPython.display import display, HTML
 from sqlalchemy import create_engine
 import matplotlib.pyplot as plt
 
