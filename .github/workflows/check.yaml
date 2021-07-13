@@ -27,6 +27,8 @@ jobs:
       - name: Install IPython
         run: pip install IPython
         
+      - name: Install matplotlib
+        run: pip install matplotlib
 
       - name: Test with unittest
         run: |
