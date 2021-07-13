@@ -24,6 +24,9 @@ jobs:
       - name: Install sqlalchemy
         run: pip install sqlalchemy
         
+      - name: Install IPython
+        run: pip install IPython
+        
       - name: Test with unittest
         run: |
           python3 -m unittest test.py

@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-import pprint
+# import pprint
 import json
 import sqlalchemy
 from IPython.display import display, HTML
@@ -9,8 +9,8 @@ from sqlalchemy import create_engine
 def main():
     dictarr = portlandPrint(portlandInfo())#[weather]
     dictarr1 = miamiPrint(miamiInfo())#[weather1]
-    pprint.pprint(dictarr)
-    pprint.pprint(dictarr1)
+    # pprint.pprint(dictarr)
+    # pprint.pprint(dictarr1)
 
     # turn dictionary of Portland into JSON file
     with open("weatherPortland.json", "w") as outfile:
