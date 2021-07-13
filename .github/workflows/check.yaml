@@ -30,6 +30,9 @@ jobs:
       - name: Install sql
         run: pip install mysql
         
+      - name: Install sql server
+        run: sudo apt-get install mysql-server
+        
       - name: Test with unittest
         run: |
           python3 -m unittest test.py
