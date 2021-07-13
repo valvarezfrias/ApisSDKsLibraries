@@ -33,6 +33,10 @@ jobs:
       - name: Install sql
         run: sudo apt-get install mysql-server
         
+      - name: Instal sqldb
+        run: sudo apt-get install python-mysqldb
+
+        
       - name: Test with unittest
         run: |
           python3 -m unittest test.py
