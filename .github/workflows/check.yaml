@@ -27,14 +27,8 @@ jobs:
       - name: Install IPython
         run: pip install IPython
         
-      - name: Install sql server
-        run: sudo apt-get install mysql-server
-        
-      - name: Install sql
-        run: sudo apt-get install mysql-server
-        
-      - name: Instal sqldb
-        run: sudo apt install -y python-mysqldb
+      - name: Install sqldb
+        run: sudo apt install default-libmysqlclient-dev
 
       - name: Test with unittest
         run: |
